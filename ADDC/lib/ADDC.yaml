@@ -25,7 +25,7 @@ parameters:
     description: Windows image version of choice
     type: string
     constraints:
-      - allowed_values: [ windows_2012_STD_64_EVA ] 
+      - allowed_values: [ windows_2012_STD_64_EVA ]
         description: must be a valid Windows image
 
   #availability_zone:
@@ -72,10 +72,10 @@ resources:
       handle: { get_resource: wait_handle }
       count: 1
       timeout: 600
- 
+
   wait_handle:
     type: OS::Heat::WaitConditionHandle
- 
+
   security_group:
     type: OS::Neutron::SecurityGroup
     properties:
@@ -85,7 +85,7 @@ resources:
           port_range_min: 3306
           port_range_max: 3306
 
-   port:
+  port:
     type: OS::Neutron::Port
     properties:
       network: { get_param: private_network }

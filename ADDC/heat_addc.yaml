@@ -31,12 +31,12 @@ parameters:
 resources:
 
   network:
-    type: lib/network_addc.yaml
+    type: https://raw.githubusercontent.com/herrsergio/heat-templates/master/ADDC/lib/network_addc.yaml
     properties:
       public_network: { get_param: public_network }
 
   dc:
-    type: lib/heat_addc.yaml 
+    type: https://raw.githubusercontent.com/herrsergio/heat-templates/master/ADDC/lib/ADDC.yaml
     properties:
       image: { get_param: image }
       flavor: { get_param: flavor }
