@@ -41,3 +41,5 @@ resources:
     properties:
       router_id: { get_resource: router }
       subnet: { get_resource: private_subnet }
+
+
