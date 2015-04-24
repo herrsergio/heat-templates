@@ -1,0 +1,43 @@
+heat_template_version: 2013-05-23
+
+description: Template that installs a Active Directory Domain controller
+
+parameters:
+
+  flavor:
+    description: Flavor de la instancia
+    label: Flavor 
+    type: string
+    default: Orange
+    constraints:
+      - allowed_values: [Orange, Red]
+
+  image:
+    default: windows_2012_STD_64_EVA
+    label: Windows image
+    description: Windows image version of choice
+    type: string
+    constraints:
+      - allowed_values: [ windows_2012_STD_64_EVA ] 
+        description: must be a valid Windows image
+
+
+  public_network:
+    type: string
+    label: Public network name or ID
+    description: Public network to attach server to.
+    default: public
+
+resources:
+
+  network:
+    type: lib/network_addc.yaml
+    properties:
+      public_network: { get_param: public_network }
+
+  dc:
+    type: lib/heat_addc.yaml 
+    properties:
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      private_network: { get_attr: [network, name] } 
