@@ -119,4 +119,13 @@ resources:
             safe_mode_administrator_password: { get_param: safe_mode_administrator_password }
             domain_name: { get_param: domain_name }
             domain_netbios_name: { get_param: domain_netbios_name }
-
+outputs:
+  name:
+    description: Name of AD instance
+    value: { get_attr: [addc_instance, name] }
+  ip:
+    description: The IP address of the instance
+    value: { get_attr: [addc_instance, first_address] }
+  port:
+    description: The network port of the instance
+    value: {get_resource: port }
