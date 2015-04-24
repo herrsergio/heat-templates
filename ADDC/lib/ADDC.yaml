@@ -66,15 +66,15 @@ parameters:
 
 resources:
 
-  wait_condition:
-    type: OS::Heat::WaitCondition
-    properties:
-      handle: { get_resource: wait_handle }
-      count: 1
-      timeout: 60
+  #wait_condition:
+  #  type: OS::Heat::WaitCondition
+  #  properties:
+  #    handle: { get_resource: wait_handle }
+  #    count: 1
+  #    timeout: 60
 
-  wait_handle:
-    type: OS::Heat::WaitConditionHandle
+  #wait_handle:
+  #  type: OS::Heat::WaitConditionHandle
 
   security_group:
     type: OS::Neutron::SecurityGroup
