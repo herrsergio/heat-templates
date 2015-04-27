@@ -91,6 +91,15 @@ parameters:
 
 resources:
 
+  security_group:
+    type: OS::Neutron::SecurityGroup
+    properties:
+      name: addc_security_group
+      rules:
+        - protocol: tcp
+          port_range_min: 6969
+          port_range_max: 7979
+
   private_net:
     type: OS::Neutron::Net
     properties:
@@ -154,6 +163,8 @@ resources:
      type: OS::Neutron::Port
      properties:
        network_id: { get_resource: private_net }
+       security_groups: [ addc_security_group ]
        fixed_ips:
          - subnet_id: {get_resource: private_subnet }
+         - ip_address: 172.17.1.29
 
